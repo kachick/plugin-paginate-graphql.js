@@ -59,7 +59,7 @@ async function main() {
     JSON.stringify(
       {
         ...pkg,
-        files: ["dist-*/**", "bin/**"],
+        files: ["dist-bundle", "dist-types", "bin"],
         main: "dist-bundle/index.js",
         types: "dist-types/index.d.ts",
         exports: {
