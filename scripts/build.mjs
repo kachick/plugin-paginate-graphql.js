@@ -18,10 +18,10 @@ async function main() {
   await rm("pkg", { recursive: true, force: true });
   // Build the source code for a neutral platform as ESM
   await esbuild.build({
+    ...sharedOptions,
     entryPoints: await glob(["./src/*.ts", "./src/**/*.ts"]),
     outdir: "pkg/dist-src",
     bundle: false,
-    ...sharedOptions,
     sourcemap: false,
   });
 
@@ -37,10 +37,10 @@ async function main() {
   const entryPoints = ["./pkg/dist-src/index.js"];
 
   await esbuild.build({
+    ...sharedOptions,
     entryPoints,
     outdir: "pkg/dist-bundle",
     bundle: true,
-    ...sharedOptions,
   });
 
   // Copy the README, LICENSE to the pkg folder
