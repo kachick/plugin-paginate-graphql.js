@@ -8,6 +8,9 @@ const sharedOptions = {
   minify: false,
   allowOverwrite: true,
   packages: "external",
+  target: "es2022",
+  platform: "neutral",
+  format: "esm",
 };
 
 async function main() {
@@ -18,8 +21,6 @@ async function main() {
     entryPoints: await glob(["./src/*.ts", "./src/**/*.ts"]),
     outdir: "pkg/dist-src",
     bundle: false,
-    platform: "neutral",
-    format: "esm",
     ...sharedOptions,
     sourcemap: false,
   });
@@ -39,9 +40,6 @@ async function main() {
     entryPoints,
     outdir: "pkg/dist-bundle",
     bundle: true,
-    platform: "neutral",
-    target: "es2022",
-    format: "esm",
     ...sharedOptions,
   });
 
